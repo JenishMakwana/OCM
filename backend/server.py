@@ -129,6 +129,9 @@ async def update_tyre(tyre_id: str, update: TyreUpdate):
         result['id'] = str(result['_id'])
         del result['_id']
         return Tyre(**result)
+    except HTTPException:
+        # Re-raise HTTPExceptions to preserve status codes
+        raise
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
 
