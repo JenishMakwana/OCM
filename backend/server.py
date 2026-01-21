@@ -161,10 +161,9 @@ app.include_router(api_router)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "https://ocm-frontend.vercel.app"
+        "https://ocm-frontend-delta.vercel.app"
     ],
     allow_credentials=True,
-    allow_origins=["*"],
     allow_methods=["*"],
     allow_headers=["*"],
 )
