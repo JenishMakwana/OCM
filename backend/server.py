@@ -73,9 +73,13 @@ async def search_tyres(brand: Optional[str] = None, size: Optional[str] = None):
     """Search tyres by brand or size"""
     query = {}
     if brand:
-        query['brand'] = {'$regex': brand, '$options': 'i'}
+        # Escape regex metacharacters for brand search
+        escaped_brand = re.escape(brand)
+        query['brand'] = {'$regex': escaped_brand, '$options': 'i'}
     if size:
-        query['size'] = {'$regex': size, '$options': 'i'}
+        # Escape regex metacharacters for size search
+        escaped_size = re.escape(size)
+        query['size'] = {'$regex': escaped_size, '$options': 'i'}
     
     tyres = await db.tyres.find(query).to_list(1000)
     result = []
