@@ -23,6 +23,9 @@ db = client[os.environ['DB_NAME']]
 # Create the main app without a prefix
 app = FastAPI()
 
+
+
+
 # Create a router with the /api prefix
 api_router = APIRouter(prefix="/api")
 
@@ -157,6 +160,9 @@ app.include_router(api_router)
 
 app.add_middleware(
     CORSMiddleware,
+    allow_origins=[
+        "https://ocm-frontend.vercel.app"
+    ],
     allow_credentials=True,
     allow_origins=["*"],
     allow_methods=["*"],
