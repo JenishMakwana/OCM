@@ -212,32 +212,34 @@ export default function Index() {
       </View>
 
       {/* Brand Filter */}
-      <ScrollView
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        style={styles.brandFilter}
-        contentContainerStyle={styles.brandFilterContent}
-      >
-        {brands.map((brand) => (
-          <TouchableOpacity
-            key={brand}
-            style={[
-              styles.brandButton,
-              selectedBrand === brand ? styles.brandButtonActive : null,
-            ]}
-            onPress={() => setSelectedBrand(brand)}
-          >
-            <Text
+      <View style={styles.brandFilterContainer}>
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          style={styles.brandFilter}
+          contentContainerStyle={styles.brandFilterContent}
+        >
+          {brands.map((brand) => (
+            <TouchableOpacity
+              key={brand}
               style={[
-                styles.brandButtonText,
-                selectedBrand === brand ? styles.brandButtonTextActive : null,
+                styles.brandButton,
+                selectedBrand === brand ? styles.brandButtonActive : null,
               ]}
+              onPress={() => setSelectedBrand(brand)}
             >
-              {brand}
-            </Text>
-          </TouchableOpacity>
-        ))}
-      </ScrollView>
+              <Text
+                style={[
+                  styles.brandButtonText,
+                  selectedBrand === brand ? styles.brandButtonTextActive : null,
+                ]}
+              >
+                {brand}
+              </Text>
+            </TouchableOpacity>
+          ))}
+        </ScrollView>
+      </View>
 
       {/* Tyre List */}
       <FlatList
